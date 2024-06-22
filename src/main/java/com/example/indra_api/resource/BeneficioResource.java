@@ -28,7 +28,7 @@ public class BeneficioResource {
     }
 
     @GetMapping("/{id}/beneficios")
-    public ResponseEntity<List<Beneficio>> listaTodosOsBeneficiosPorCliente(@PathVariable Long id){
+    public ResponseEntity<List<BeneficioDTOResponse>> listaTodosOsBeneficiosPorCliente(@PathVariable Long id){
         //Cliente cliente = clienteService.buscarPeloId(id);
         return beneficioService.listaTodosOsBeneficiosPorCliente(id);//ResponseEntity.ok(cliente.getBeneficios());
     }

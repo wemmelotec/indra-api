@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,20 +31,27 @@ public class BeneficioService {
         return beneficioDTOResponse;
     }
 
-    public ResponseEntity<Cliente> adicionarBeneficio(@PathVariable Long id, @RequestBody Beneficio beneficio, HttpServletResponse response){
+    public ResponseEntity<Cliente> adicionarBeneficio(@PathVariable Long id, @RequestBody Beneficio beneficio, HttpServletResponse response) {
         Cliente clienteSalvo = clienteService.buscarPeloId(id);
         beneficio.setIdcliente(clienteSalvo);
         beneficioRepository.save(beneficio);
 
         clienteSalvo.getBeneficios().add(beneficio);
-        clienteService.criar(clienteSalvo,response);
+        clienteService.criar(clienteSalvo, response);
 
         return ResponseEntity.ok(clienteSalvo);
     }
 
-    public ResponseEntity<List<Beneficio>> listaTodosOsBeneficiosPorCliente(@PathVariable Long id){
+    public ResponseEntity<List<BeneficioDTOResponse>> listaTodosOsBeneficiosPorCliente(@PathVariable Long id) {
         Cliente cliente = clienteService.buscarPeloId(id);
-        return ResponseEntity.ok(cliente.getBeneficios());
+        List<Beneficio> beneficios = cliente.getBeneficios();
+        List<BeneficioDTOResponse> beneficioDTOResponsesList = new ArrayList<>(beneficios.size());
+        for (Beneficio beneficio : beneficios) {
+                BeneficioDTOResponse beneficioDTOResponse = new BeneficioDTOResponse(beneficio.getId(), beneficio.getNome(), beneficio.getDescricao(),
+                        beneficio.getDataInicio(), beneficio.getDataFim());
+                beneficioDTOResponsesList.add(beneficioDTOResponse);
+        }
+        return ResponseEntity.ok(beneficioDTOResponsesList);
     }
 
     public void remover(@PathVariable Long id) {
