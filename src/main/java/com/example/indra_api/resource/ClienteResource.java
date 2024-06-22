@@ -5,6 +5,7 @@ import com.example.indra_api.repository.BeneficioRepository;
 import com.example.indra_api.repository.ClienteRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +34,7 @@ public class ClienteResource {
     }
 
     @GetMapping(path = "/{id}")
-    public Cliente buscarPeloId(@PathVariable Long id){
+    public Cliente buscarPeloId(@PathVariable Long id) {
         return clienteRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente não encontrado"));
     }
 
@@ -51,7 +52,15 @@ public class ClienteResource {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remover(@PathVariable Long id) {
-        beneficioRepository.deleteById(id);
+        //beneficioRepository.deleteById(id);
         clienteRepository.deleteById(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @Valid @RequestBody Cliente cliente) {
+        Cliente clienteSalvo = clienteRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Cliente não encontrado"));
+        BeanUtils.copyProperties(cliente, clienteSalvo, "id");
+        clienteRepository.save(clienteSalvo);
+        return ResponseEntity.ok(clienteSalvo);
     }
 }
