@@ -1,5 +1,6 @@
 package com.example.indra_api.resource;
 
+import com.example.indra_api.dto.BeneficioDTOResponse;
 import com.example.indra_api.model.Beneficio;
 import com.example.indra_api.model.Cliente;
 import com.example.indra_api.service.BeneficioService;
@@ -22,7 +23,7 @@ public class BeneficioResource {
     private ClienteService clienteService;
 
     @GetMapping("/{id}")
-    public Beneficio buscarPeloId(@PathVariable Long id){
+    public BeneficioDTOResponse buscarPeloId(@PathVariable Long id){
         return beneficioService.buscarPeloId(id);
     }
 

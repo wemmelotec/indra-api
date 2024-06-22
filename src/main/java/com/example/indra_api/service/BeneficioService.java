@@ -1,5 +1,6 @@
 package com.example.indra_api.service;
 
+import com.example.indra_api.dto.BeneficioDTOResponse;
 import com.example.indra_api.model.Beneficio;
 import com.example.indra_api.model.Cliente;
 import com.example.indra_api.repository.BeneficioRepository;
@@ -22,8 +23,11 @@ public class BeneficioService {
     @Autowired
     private ClienteService clienteService;
 
-    public Beneficio buscarPeloId(@PathVariable Long id) {
-        return beneficioRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Beneficio não encontrado"));
+    public BeneficioDTOResponse buscarPeloId(@PathVariable Long id) {
+        Beneficio beneficio = beneficioRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Beneficio não encontrado"));
+        BeneficioDTOResponse beneficioDTOResponse = new BeneficioDTOResponse(beneficio.getId(), beneficio.getNome(), beneficio.getDescricao(),
+                beneficio.getDataInicio(), beneficio.getDataFim());
+        return beneficioDTOResponse;
     }
 
     public ResponseEntity<Cliente> adicionarBeneficio(@PathVariable Long id, @RequestBody Beneficio beneficio, HttpServletResponse response){
