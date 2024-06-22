@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @Service
 public class BeneficioService {
 
@@ -33,6 +35,11 @@ public class BeneficioService {
         clienteService.criar(clienteSalvo,response);
 
         return ResponseEntity.ok(clienteSalvo);
+    }
+
+    public ResponseEntity<List<Beneficio>> listaTodosOsBeneficiosPorCliente(@PathVariable Long id){
+        Cliente cliente = clienteService.buscarPeloId(id);
+        return ResponseEntity.ok(cliente.getBeneficios());
     }
 
 }
