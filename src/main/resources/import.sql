@@ -7,6 +7,8 @@ INSERT INTO clientes (nome, agencia, conta, tipo_da_conta, score) VALUES ('Bruno
 
 INSERT INTO beneficios (cliente_id, nome, descricao, data_inicio, data_fim) VALUES (1, 'Benefício 1', 'Descrição do Benefício 1', '2023-01-01', '2023-12-31');
 INSERT INTO beneficios (cliente_id, nome, descricao, data_inicio, data_fim) VALUES (1, 'Benefício 2', 'Descrição do Benefício 2', '2024-06-06', '2024-07-06');
-INSERT INTO beneficios (cliente_id, nome, descricao, data_inicio, data_fim) VALUES (2, 'Benefício 2', 'Descrição do Benefício 2', '2024-06-06', '2024-07-06');
+INSERT INTO beneficios (cliente_id, nome, descricao, data_inicio, data_fim) VALUES (2, 'Benefício 3', 'Descrição do Benefício 3', '2024-06-06', '2024-07-06');
+INSERT INTO beneficios (cliente_id, nome, descricao, data_inicio, data_fim) VALUES (2, 'Benefício 4', 'Descrição do Benefício 4', '2024-06-22', '2024-07-22');
+INSERT INTO beneficios (cliente_id, nome, descricao, data_inicio, data_fim) VALUES (2, 'Benefício 5', 'Descrição do Benefício 5', '2025-01-01', '2025-02-01');
 
 

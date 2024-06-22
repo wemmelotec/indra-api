@@ -1,5 +1,6 @@
 package com.example.indra_api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -17,6 +18,7 @@ public class Beneficio {
     @JsonManagedReference
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
+    @JsonIgnore
     private Cliente cliente_id;
 
     private String nome;

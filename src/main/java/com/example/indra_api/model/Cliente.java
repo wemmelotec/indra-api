@@ -2,7 +2,6 @@ package com.example.indra_api.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
@@ -37,7 +36,7 @@ public class Cliente {
     private Integer score;
 
     @JsonBackReference
-    @OneToMany (mappedBy = "cliente_id", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente_id", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Beneficio> beneficios;
 

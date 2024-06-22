@@ -4,12 +4,10 @@ import com.example.indra_api.model.Cliente;
 import com.example.indra_api.service.ClienteService;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -45,7 +43,6 @@ public class ClienteResource {
 
     @PutMapping("/{id}")
     public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @Valid @RequestBody Cliente cliente) {
-
-        return clienteService.atualizar(id,cliente);
+        return clienteService.atualizar(id, cliente);
     }
 }
