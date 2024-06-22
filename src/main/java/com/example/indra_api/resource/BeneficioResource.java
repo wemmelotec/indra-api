@@ -6,6 +6,7 @@ import com.example.indra_api.service.BeneficioService;
 import com.example.indra_api.service.ClienteService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,12 @@ public class BeneficioResource {
     @PostMapping("/{id}/beneficios")
     public ResponseEntity<Cliente> adicionarBeneficio(@PathVariable Long id, @RequestBody Beneficio beneficio, HttpServletResponse response){
         return beneficioService.adicionarBeneficio(id, beneficio, response);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void remover(@PathVariable Long id) {
+        beneficioService.remover(id);
     }
 
 }

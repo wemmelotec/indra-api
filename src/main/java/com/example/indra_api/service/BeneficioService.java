@@ -42,4 +42,8 @@ public class BeneficioService {
         return ResponseEntity.ok(cliente.getBeneficios());
     }
 
+    public void remover(@PathVariable Long id) {
+        beneficioRepository.deleteById(id);
+    }
+
 }
