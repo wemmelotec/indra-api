@@ -1,7 +1,7 @@
 package com.example.indra_api.model;
 
 import jakarta.persistence.*;
-
+import jakarta.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
@@ -12,25 +12,28 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @NotNull
+    //@Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false)
+    @NotNull
+    //@Column(nullable = false)
     private Long agencia;
 
-    @Column(nullable = false)
+    @NotNull
+    //@Column(nullable = false)
     private Long conta;
 
-    @Column(nullable = false)
-    private byte tipoDaConta;
+    @NotNull
+    //@Column(nullable = false)
+    private Long tipoDaConta;
 
-    @Column(nullable = false)
     private Integer score;
 
     public Cliente() {
     }
 
-    public Cliente(Long id, String nome, Long agencia, Long conta, byte tipoDaConta, Integer score) {
+    public Cliente(Long id, String nome, Long agencia, Long conta, Long tipoDaConta, Integer score) {
         this.id = id;
         this.nome = nome;
         this.agencia = agencia;
@@ -71,11 +74,11 @@ public class Cliente {
         this.conta = conta;
     }
 
-    public byte getTipoDaConta() {
+    public Long getTipoDaConta() {
         return tipoDaConta;
     }
 
-    public void setTipoDaConta(byte tipoDaConta) {
+    public void setTipoDaConta(Long tipoDaConta) {
         this.tipoDaConta = tipoDaConta;
     }
 

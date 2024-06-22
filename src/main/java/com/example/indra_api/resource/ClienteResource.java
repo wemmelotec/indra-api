@@ -3,6 +3,7 @@ package com.example.indra_api.resource;
 import com.example.indra_api.model.Cliente;
 import com.example.indra_api.repository.ClienteRepository;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +34,7 @@ public class ClienteResource {
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> criar(@RequestBody Cliente cliente, HttpServletResponse response) {
+    public ResponseEntity<Cliente> criar(@Valid @RequestBody Cliente cliente, HttpServletResponse response) {
         Cliente clienteSalvo = clienteRepository.save(cliente);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
