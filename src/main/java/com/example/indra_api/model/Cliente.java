@@ -31,7 +31,8 @@ public class Cliente {
 
     @NotNull
     //@Column(nullable = false)
-    private Long tipoDaConta;
+    @Enumerated(EnumType.ORDINAL)
+    private TipoDaConta tipoDaConta;
 
     private Integer score;
 
@@ -44,13 +45,14 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(Long id, String nome, Long agencia, Long conta, Long tipoDaConta, Integer score) {
+    public Cliente(Long id, String nome, Long agencia, Long conta, TipoDaConta tipoDaConta, Integer score, List<Beneficio> beneficios) {
         this.id = id;
         this.nome = nome;
         this.agencia = agencia;
         this.conta = conta;
         this.tipoDaConta = tipoDaConta;
         this.score = score;
+        this.beneficios = beneficios;
     }
 
     public Long getId() {
@@ -85,11 +87,11 @@ public class Cliente {
         this.conta = conta;
     }
 
-    public Long getTipoDaConta() {
+    public @NotNull TipoDaConta getTipoDaConta() {
         return tipoDaConta;
     }
 
-    public void setTipoDaConta(Long tipoDaConta) {
+    public void setTipoDaConta(@NotNull TipoDaConta tipoDaConta) {
         this.tipoDaConta = tipoDaConta;
     }
 
