@@ -1,6 +1,7 @@
 package com.example.indra_api.resource;
 
 import com.example.indra_api.model.Cliente;
+import com.example.indra_api.repository.BeneficioRepository;
 import com.example.indra_api.repository.ClienteRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -23,6 +24,9 @@ public class ClienteResource {
     @Autowired
     private ClienteRepository clienteRepository;
 
+    @Autowired
+    private BeneficioRepository beneficioRepository;
+
     @GetMapping
     public List<Cliente> listar() {
         return clienteRepository.findAll();
@@ -42,5 +46,12 @@ public class ClienteResource {
         response.setHeader("Location", uri.toASCIIString());
 
         return ResponseEntity.created(uri).body(clienteSalvo);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void remover(@PathVariable Long id) {
+        beneficioRepository.deleteById(id);
+        clienteRepository.deleteById(id);
     }
 }

@@ -13,9 +13,9 @@ public class Beneficio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cliente_id", referencedColumnName = "id")
-    private Cliente idcliente;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Cliente cliente_id;
 
     private String nome;
 
@@ -30,7 +30,7 @@ public class Beneficio {
 
     public Beneficio(Long id, Cliente idcliente, String nome, String descricao, LocalDate dataInicio, LocalDate dataFim) {
         this.id = id;
-        this.idcliente = idcliente;
+        this.cliente_id = idcliente;
         this.nome = nome;
         this.descricao = descricao;
         this.dataInicio = dataInicio;
@@ -46,11 +46,11 @@ public class Beneficio {
     }
 
     public Cliente getIdcliente() {
-        return idcliente;
+        return cliente_id;
     }
 
     public void setIdcliente(Cliente idcliente) {
-        this.idcliente = idcliente;
+        this.cliente_id = idcliente;
     }
 
     public String getNome() {
@@ -90,19 +90,19 @@ public class Beneficio {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Beneficio beneficio = (Beneficio) o;
-        return Objects.equals(id, beneficio.id) && Objects.equals(idcliente, beneficio.idcliente) && Objects.equals(nome, beneficio.nome) && Objects.equals(descricao, beneficio.descricao) && Objects.equals(dataInicio, beneficio.dataInicio) && Objects.equals(dataFim, beneficio.dataFim);
+        return Objects.equals(id, beneficio.id) && Objects.equals(cliente_id, beneficio.cliente_id) && Objects.equals(nome, beneficio.nome) && Objects.equals(descricao, beneficio.descricao) && Objects.equals(dataInicio, beneficio.dataInicio) && Objects.equals(dataFim, beneficio.dataFim);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, idcliente, nome, descricao, dataInicio, dataFim);
+        return Objects.hash(id, cliente_id, nome, descricao, dataInicio, dataFim);
     }
 
     @Override
     public String toString() {
         return "Beneficio{" +
                 "id=" + id +
-                ", idcliente=" + idcliente +
+                ", cliente_id=" + cliente_id +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", dataInicio=" + dataInicio +

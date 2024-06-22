@@ -2,6 +2,8 @@ package com.example.indra_api.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -29,6 +31,10 @@ public class Cliente {
     private Long tipoDaConta;
 
     private Integer score;
+
+    @OneToMany (mappedBy = "cliente_id", cascade = CascadeType.ALL)
+    private List<Beneficio> beneficios;
+
 
     public Cliente() {
     }
@@ -88,6 +94,14 @@ public class Cliente {
 
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    public List<Beneficio> getBeneficios() {
+        return beneficios;
+    }
+
+    public void setBeneficios(List<Beneficio> beneficios) {
+        this.beneficios = beneficios;
     }
 
     @Override
