@@ -8,7 +8,10 @@ Esta API fornece um CRUD para o gerenciamento dos clientes e seus repectivos ben
 
 ### 🛠️ Configuração e Instalação
 
-Configuração e instalação do projeto. É necessário ter o Java, o Maven, uma IDE de sua preferência e o PostMan instalados na sua máquina. A aplicação utiliza banco de dados em memória H2.
+- Java 21.
+- Spring Boot 3.3.1.
+- É necessário ter o Java, o Maven, uma IDE de sua preferência e o PostMan instalados na sua máquina.
+- A aplicação utiliza banco de dados em memória H2.
 
 Para rodar a aplicação, siga os passos abaixo:
 
