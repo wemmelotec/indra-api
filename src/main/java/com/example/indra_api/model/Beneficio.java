@@ -3,10 +3,12 @@ package com.example.indra_api.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 import java.util.Objects;
 
+/**
+ * <h1>Esta é a classe que vai instanciar o objeto Benefício.</h1>
+ */
 @Entity
 @Table(name = "beneficios")
 public class Beneficio {

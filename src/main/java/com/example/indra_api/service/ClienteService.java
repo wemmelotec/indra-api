@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import java.net.URI;
 import java.util.List;
+
+/**
+ * <h1>Esta classe é responsável pelas regras de negócio da classe Cliente.</h1>
+ */
 
 @Service
 public class ClienteService {

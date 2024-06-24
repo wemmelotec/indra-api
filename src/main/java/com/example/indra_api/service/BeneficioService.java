@@ -12,10 +12,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * /**
+ *  * <h1>Esta classe é responsável pelas regras de negócio da classe Benefício.</h1>
+ *
+ */
 @Service
 public class BeneficioService {
 

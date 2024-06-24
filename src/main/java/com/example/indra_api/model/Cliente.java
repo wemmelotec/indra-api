@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * <h1>Esta é a classe que vai instanciar o objeto Cliente.</h1>
+ */
 @Entity
 @Table(name = "clientes")
 public class Cliente {
@@ -17,19 +19,15 @@ public class Cliente {
     private Long id;
 
     @NotNull
-    //@Column(nullable = false)
     private String nome;
 
     @NotNull
-    //@Column(nullable = false)
     private Long agencia;
 
     @NotNull
-    //@Column(nullable = false)
     private Long conta;
 
     @NotNull
-    //@Column(nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private TipoDaConta tipoDaConta;
 

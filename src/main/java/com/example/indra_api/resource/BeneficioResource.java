@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * <h1>Expõe os EndPoints da classe Benefícios.</h1>
+ * <h1>Expõe os EndPoints da classe Benefício.</h1>
  * <h2>Métodos:</h2>
  * <ol>
  *     <li>buscarPeloId -> recebe o id do benefício no path e retorna o benefício.</li>

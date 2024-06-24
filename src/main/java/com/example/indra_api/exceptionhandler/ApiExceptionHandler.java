@@ -14,7 +14,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +23,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
     @Autowired
     MessageSource messageSource;
 
+    //Este método irá fazer um tratamento caso o usuário passe atributos desconhecidos para serem salvos na API.
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
                                                                   HttpHeaders headers, HttpStatusCode status,
@@ -32,7 +32,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         String mensagemDesenvolvedor = ex.getCause().toString();
         return handleExceptionInternal(ex, new Erro(mensagemUsuario, mensagemDesenvolvedor) , headers, HttpStatus.BAD_REQUEST, request);
     }
-
+    //Este método irá fazer um tratamento caso o usuário passe argumentos errados nos atributos para serem salvos na API.
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers,
