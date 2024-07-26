@@ -1,18 +1,27 @@
 package com.example.indra_api.resource;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.example.indra_api.dto.BeneficioDTOResponse;
 import com.example.indra_api.model.Beneficio;
 import com.example.indra_api.model.Cliente;
 import com.example.indra_api.service.BeneficioService;
 import com.example.indra_api.service.ClienteService;
+
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * <h1>Expõe os EndPoints da classe Benefício.</h1>
@@ -57,5 +66,6 @@ public class BeneficioResource {
     public void remover(@PathVariable Long id) {
         beneficioService.remover(id);
     }
+ 
 
 }

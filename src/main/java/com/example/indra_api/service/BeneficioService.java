@@ -1,10 +1,8 @@
 package com.example.indra_api.service;
 
-import com.example.indra_api.dto.BeneficioDTOResponse;
-import com.example.indra_api.model.Beneficio;
-import com.example.indra_api.model.Cliente;
-import com.example.indra_api.repository.BeneficioRepository;
-import jakarta.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +10,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
-import java.util.ArrayList;
-import java.util.List;
+
+import com.example.indra_api.dto.BeneficioDTOResponse;
+import com.example.indra_api.model.Beneficio;
+import com.example.indra_api.model.Cliente;
+import com.example.indra_api.repository.BeneficioRepository;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * /**
@@ -61,5 +64,7 @@ public class BeneficioService {
     public void remover(@PathVariable Long id) {
         beneficioRepository.deleteById(id);
     }
+    
+
 
 }
