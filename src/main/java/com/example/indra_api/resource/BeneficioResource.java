@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.indra_api.dto.BeneficioDTOResponse;
+import com.example.indra_api.dto.BeneficioDTOTest;
 import com.example.indra_api.model.Beneficio;
 import com.example.indra_api.model.Cliente;
 import com.example.indra_api.service.BeneficioService;
@@ -65,6 +66,11 @@ public class BeneficioResource {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void remover(@PathVariable Long id) {
         beneficioService.remover(id);
+    }
+    
+    @GetMapping("/listarDTO")
+    public List<BeneficioDTOTest> listarBeneficiosDTOTest(){
+    	return beneficioService.listarBeneficioDTOTeste();
     }
  
 

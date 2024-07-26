@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.indra_api.dto.BeneficioDTOResponse;
+import com.example.indra_api.dto.BeneficioDTOTest;
 import com.example.indra_api.model.Beneficio;
 import com.example.indra_api.model.Cliente;
 import com.example.indra_api.repository.BeneficioRepository;
@@ -64,6 +65,11 @@ public class BeneficioService {
     public void remover(@PathVariable Long id) {
         beneficioRepository.deleteById(id);
     }
+
+	public List<BeneficioDTOTest> listarBeneficioDTOTeste() {
+		// TODO Auto-generated method stub
+		return  beneficioRepository.listarBeneficioDTOTests();
+	}
     
 
 
